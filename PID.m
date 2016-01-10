@@ -24,30 +24,38 @@ function [angle time] = PID(endAngle, startAngle)
 	[startX, startY, startZ] = decompose_rotation(startAngle);
 
 	%create a variable that I can mess with
-	curX = startX;
-
+	curX = startX
+	endX
 	
 
 	time = [0];
 	angle = [curX];
 
+	%P, I, and D values
+	P = .0001;
 
-	%loop that continues until the end angle is reached
+	xError = 0;
 
+
+	%loops until end angle is reached
 	while successcounter < successNum
 
 		%if the angle is within the margin of error
-		if endX > startX - angleError && endX < startX + angleError
-			successcounter = successcounter + 1
+		if endX > curX - angleError && endX < curX + angleError;
+			successcounter = successcounter + 1;
 		end
 
 		%Update the P, I, and D values
 
+		%error between current and desired state
+
+		xError = endX - curX
+
+		curX = curX + xError * P;
 
 		%update angle and time variable
 		time = [time time(end) + dt]; 
-
-		pause(.5);
+		angle = [angle curX];
 
 	end
 

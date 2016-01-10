@@ -1,0 +1,64 @@
+Pending:
+	
+	*model movement or orientation
+		*figure out equation for rotation based on torque
+			*figure out how to calculate torque based on motor location
+		*figure out equation for translational movement based on translational force
+			*figure out how to calculate translational force
+
+	*have the axis of visualiztion change based on inputed data
+
+	*finish writing sudo code for the PID sketch
+
+	*create these clases 
+			|
+			V
+	*Motor Class
+		*variables
+			*tau constant
+			*orientation of the motor in vectors and angles for forward dirrection
+			*max forward/reverse thrust
+			*limit forwards and backwards for input command
+			*current force
+			*end force
+			*time interval
+
+		*methods
+			*newMotor = createMotor(starting orientation, time interval)
+			*force = getForce(desired Force, ROV orientation of ROV, time interval)
+				*uses time interval to ramp up/down force based on tau
+				*get new orienation from getNewOrienation() 
+			*newOrientation = getNewOrienation(starting orientation, ROV orientation)
+				*calculates the new orientation of motor in vectors and angles based on the starting and ROV rotation
+			*forceInputToNewtons
+				*converts the input signal to newtons
+	 	
+
+	*ROV class
+		*variables
+			*matrix storing each motor class variable
+			*matrix with all three moments of inertia in Kg * m^2
+			*mass of the Rov in Kg
+			*matrix storing motors radius from moments
+			*total surface area of Rov
+			*orienation
+			*x, y, z position
+
+
+		*methods
+			*createMotors(number of motors, time interval, max force)
+			*updateRovOrientation(force1, force2, ..., forceN)
+				*force1...forceN are the input to the motors, not the actual force
+				*
+			*updateRovLocation()
+			*calculateTorque()
+			*calculateTranslationalForce()
+
+
+
+Completed:
+
+
+
+
+
