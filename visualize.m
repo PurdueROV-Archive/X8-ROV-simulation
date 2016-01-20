@@ -1,27 +1,32 @@
-function visualize(angle, time, setpoint)
+function visualize(angle, time)
 	
-	hold all;
+    
 
-	h = figure(1);
+	hold on;
 
-	line([0, max(time)], [setpoint,setpoint], 'LineWidth', 2, 'Color', 'b')
-	  
-	plot(time, angle, '-r', 'LineWidth',2);
-
-
-
-
-	set(h, 'Position', [0 0 700 700])
-
-	grid on
-
-	xlabel('time (s)');
-	ylabel('angle');
-	set(gca,'YTick',[-45:5:45])
-
-	set(gca,'XTick',[0:0.2:max(time)])
-
-	
+	figure(1)
+    subplot(3, 1, 1)
+    plot(time, angle(:, 1))
+    
+    ylabel('x angle')
+    xlabel('time')
+    
+    
+    hold on;
+    
+    subplot(3, 1, 2)
+    plot(time, angle(:, 2))
+       
+    ylabel('y angle')
+    xlabel('time')
+    
+    hold on;
+    
+    subplot(3, 1, 3)
+    plot(time, angle(:, 3))
+    
+    ylabel('z angle')
+    xlabel('time')
 
 end
 

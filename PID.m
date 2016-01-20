@@ -6,7 +6,7 @@ function [angle time] = PID(endAngle, startAngle)
 	angleError = 0.5;
 
 	%time increment
-	dt = 0.020
+	dt = 0.020;
 
 	%success counter counts many consecutive times the end angle has been reached
 	successcounter = 0;
@@ -24,8 +24,8 @@ function [angle time] = PID(endAngle, startAngle)
 	[startX, startY, startZ] = decompose_rotation(startAngle);
 
 	%create a variable that I can mess with
-	curX = startX
-	endX
+	curX = startX;
+	
 	
 
 	time = [0];
@@ -49,7 +49,7 @@ function [angle time] = PID(endAngle, startAngle)
 
 		%error between current and desired state
 
-		xError = endX - curX
+		xError = endX - curX;
 
 		curX = curX + xError * P;
 
